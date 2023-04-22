@@ -93,8 +93,8 @@ export default class MemeGenerator extends Component {
   }
 
   render() {
-    const {detailsObject} = this.state
-    const {imageUrl, topText, bottomText, fontSize} = detailsObject
+    const {detailsObject, fontSize} = this.state
+    const {imageUrl, topText, bottomText} = detailsObject
     console.log(fontSize)
 
     return (
@@ -131,9 +131,13 @@ export default class MemeGenerator extends Component {
             </InputContainer>
             <InputContainer>
               <label htmlFor="font-size">Font Size</label>
-              <Select onChange={this.onChangeFontSize} id="font-size">
+              <Select
+                value={fontSize}
+                onChange={this.onChangeFontSize}
+                id="font-size"
+              >
                 {fontSizesOptionsList.map(object => (
-                  <option value={object.optionId} id={object.optionId}>
+                  <option value={object.optionId} key={object.optionId}>
                     {object.displayText}
                   </option>
                 ))}
